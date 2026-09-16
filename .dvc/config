@@ -1,4 +1,2 @@
 [core]
     remote = local_storage
-['remote "local_storage"']
-    url = C:\Users\admin\mlops-pune-price-prediction\dvc_remote
