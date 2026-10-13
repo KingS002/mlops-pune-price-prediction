@@ -75,3 +75,5 @@ catboost_info/
 *.tmp
 *.bak
 *.log
+# ── Replacement real-estate dataset ──────────────────────────────────────────
+data/raw/uci_real_estate/
