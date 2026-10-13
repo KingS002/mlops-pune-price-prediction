@@ -96,3 +96,19 @@ stages:
       hash: md5
       md5: 5cea51f74f21d25e454be011ed4c2f95
       size: 5451
+  clean_uci:
+    cmd: python -m mlops.clean_uci_data
+    deps:
+    - path: data/raw/uci_real_estate/Real estate valuation data set.xlsx
+      hash: md5
+      md5: 8702c90d1ca99feb3be5d21be9d38bc1
+      size: 32717
+    - path: mlops/clean_uci_data.py
+      hash: md5
+      md5: 40b4e371ba7adbeaee62b10ab58524ea
+      size: 2663
+    outs:
+    - path: data/processed/real_estate_clean.csv
+      hash: md5
+      md5: 7bf507d84971ac0e98e6b820dc0f68cd
+      size: 21485

@@ -86,3 +86,12 @@ stages:
     metrics:
       - metrics/train_metrics.json:
           cache: false       # tiny; keep it in Git so `dvc metrics diff` works across commits
+
+  # ── Separate UCI dataset cleaning stage ──────────────────────────────────
+  clean_uci:
+    cmd: python -m mlops.clean_uci_data
+    deps:
+      - mlops/clean_uci_data.py
+      - data/raw/uci_real_estate/Real estate valuation data set.xlsx
+    outs:
+      - data/processed/real_estate_clean.csv
