@@ -24,6 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Download UCI real estate dataset
+        run: |
+          mkdir -p data/raw/uci_real_estate
+          curl -fL "https://archive.ics.uci.edu/static/public/477/real+estate+valuation+data+set.zip" -o /tmp/uci-real-estate.zip
+          python -c "import zipfile; zipfile.ZipFile('/tmp/uci-real-estate.zip').extract('Real estate valuation data set.xlsx', 'data/raw/uci_real_estate')"
+          test -f "data/raw/uci_real_estate/Real estate valuation data set.xlsx"
+
       - name: Run tests
         run: |
           python -m pytest -v
