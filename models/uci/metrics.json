@@ -1,0 +1,11 @@
+{
+    "model": "RandomForestRegressor",
+    "dataset": "UCI Real Estate Valuation",
+    "training_samples": 331,
+    "testing_samples": 83,
+    "random_state": 42,
+    "test_size": 0.2,
+    "mae": 3.7454658458088943,
+    "rmse": 5.521957528782536,
+    "r2": 0.8182399774339335
+}

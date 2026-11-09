@@ -95,3 +95,27 @@ stages:
       - data/raw/uci_real_estate/Real estate valuation data set.xlsx
     outs:
       - data/processed/real_estate_clean.csv
+
+# ── UCI feature engineering stage ────────────────────────────────
+  features_uci:
+    cmd: python -m mlops.build_uci_features
+    deps:
+      - mlops/build_uci_features.py
+      - data/processed/real_estate_clean.csv
+    outs:
+      - data/processed/real_estate_features.csv
+      - data/processed/real_estate_target.csv
+
+  # ── UCI model training and evaluation stage ───────────────────────
+  train_uci:
+    cmd: python -m mlops.train_uci
+    deps:
+      - mlops/train_uci.py
+      - data/processed/real_estate_features.csv
+      - data/processed/real_estate_target.csv
+    outs:
+      - models/uci/random_forest_model.joblib
+    metrics:
+      - models/uci/metrics.json:
+          cache: false
+

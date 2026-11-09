@@ -112,3 +112,47 @@ stages:
       hash: md5
       md5: 7bf507d84971ac0e98e6b820dc0f68cd
       size: 21485
+  features_uci:
+    cmd: python -m mlops.build_uci_features
+    deps:
+    - path: data/processed/real_estate_clean.csv
+      hash: md5
+      md5: 7bf507d84971ac0e98e6b820dc0f68cd
+      size: 21485
+    - path: mlops/build_uci_features.py
+      hash: md5
+      md5: 60fe9f6b3901c682605428f8917d6c77
+      size: 2600
+    outs:
+    - path: data/processed/real_estate_features.csv
+      hash: md5
+      md5: 97d98e7106b55c9fb9f5af236ec50879
+      size: 34794
+    - path: data/processed/real_estate_target.csv
+      hash: md5
+      md5: 6949e9d477407d37daf208f4b07738c7
+      size: 2505
+  train_uci:
+    cmd: python -m mlops.train_uci
+    deps:
+    - path: data/processed/real_estate_features.csv
+      hash: md5
+      md5: 97d98e7106b55c9fb9f5af236ec50879
+      size: 34794
+    - path: data/processed/real_estate_target.csv
+      hash: md5
+      md5: 6949e9d477407d37daf208f4b07738c7
+      size: 2505
+    - path: mlops/train_uci.py
+      hash: md5
+      md5: 0441c05e74ef84301dc28341b350f379
+      size: 3065
+    outs:
+    - path: models/uci/metrics.json
+      hash: md5
+      md5: 43e02d83c61ddba37a8095c6e3650caf
+      size: 288
+    - path: models/uci/random_forest_model.joblib
+      hash: md5
+      md5: be9accdafcac1478a25c858b31cb2454
+      size: 2351441
