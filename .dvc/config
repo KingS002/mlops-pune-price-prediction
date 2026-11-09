@@ -2,3 +2,5 @@
     remote = local_storage
 ['remote "local_storage"']
     url = ../dvc_remote
+['remote "dagshub_storage"']
+    url = https://dagshub.com/KingS002/mlops-pune-price-prediction.dvc
